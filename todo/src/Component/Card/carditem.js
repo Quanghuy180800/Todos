@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './carditem.css';
 
 
-function CardItem() {
+function CardItem({todo}) {
+
 
     const [status, setStatus] = useState('New');
 
@@ -10,24 +11,26 @@ function CardItem() {
       setStatus(e.target.value);
     }
 
+
+
     return (
         <>
         <div className="card">
       <div className="container">
         <p className="title">
           <label>Title: </label>
-          <label>Task 1</label>
+          <label>{todo.title}</label>
         </p>
         <p className="creator">
           <label>Creator: </label>
-          <label>Nam</label>
+          <label>{todo.creator}</label>
         </p>
         <p className="status">
           <label>Status: </label>
           <label>{status}</label>
         </p>
         <hr className="lineBreak" />
-        <p className="description">Description: This is a task</p>
+        <p className="description">{todo.description}</p>
 
         <select value={status} onChange = {handleChange}>
           <option>New</option>
@@ -36,6 +39,7 @@ function CardItem() {
         </select>
       </div>
     </div>
+
         </>
     );
 }
